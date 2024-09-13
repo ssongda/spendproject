@@ -1,0 +1,94 @@
+.calendar {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendarWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 400px;
+  min-height: 300px;
+  background-color: white;
+  text-align: center;
+}
+
+
+
+.calendarHeader #month {
+  float: left;
+  padding: 10px 10px 0px 10px;
+  color: ivory;
+  font-size: 40px;
+  background-color: #F6BB43;
+}
+
+.calendarHeader #year {
+  color: #F6BB43;
+}
+
+
+
+.weekdayTh {
+  width: 100px;
+  height: 15px;
+  font-size: 15px;
+  color: white;
+  background-color: #adb5bd;
+  box-shadow: 0px 0px 3px #ddd;
+}
+
+.weekdaysTd {
+  cursor: pointer;
+  margin: 5px;
+  font-size: 12px;
+  box-shadow: 0px 0px 3px #ddd;
+}
+
+.calendarEmpty {
+  color: gray;
+  font-size: 12px;
+  box-shadow: 0px 0px 3px #ddd;
+}
+
+
+.calendarSaturday {
+  background-color: #CCE5FF;
+  color: blue;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.calendarSunday {
+  background-color: #FFCCCC;
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.calendarPreviousSaturday,
+.calendarAfterSaturday {
+  background-color: #CCE5FF;
+  color: gray;
+  font-size: 12px;
+}
+
+.calendarPreviousSunday,
+.calendarAfterSunday {
+  background-color: #FFCCCC;
+  color: gray;
+  font-size: 12px;
+}
+
+.calendarToday {
+  cursor: pointer;
+  margin: 5px;
+  font-size: 12px;
+  box-shadow: 0px 0px 3px #FFCC00;
+  background-color: #FFFF99;
+}

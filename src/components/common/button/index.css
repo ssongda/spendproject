@@ -1,0 +1,9 @@
+.moveButton {
+    width: 75px;
+    cursor: pointer;
+    border: none;
+    padding: 2px;
+    margin: 2px;
+    color: white;
+    background-color: #F6BB43;
+}
