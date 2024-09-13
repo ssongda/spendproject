@@ -17,7 +17,7 @@ function SpendList({ selectedDate, spendContent, setSpendContent }) {
 
 
     const handleClick = (spendId) => {
-        //console.log(e);
+
         setSpendContent(spendContent.filter(filter => filter.id !== spendId))
     }
 
