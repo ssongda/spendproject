@@ -20,7 +20,7 @@ export const useGetSpend = ({ selectedDate }) => {
         }));
     }, []);
 
-    //hellohello?
+
 
     useEffect(() => {
         const test = localStorage.getItem('test');
@@ -29,11 +29,6 @@ export const useGetSpend = ({ selectedDate }) => {
             .split('/')
             .map((item) => item.padStart(2, '0'))
             .join('');
-
-        //songdasongda
-        //locallocal
-        //hey
-        //MASTER SAYS!!!
 
         if (test) {
             setObj(JSON.parse(test));
