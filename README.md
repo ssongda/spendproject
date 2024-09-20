@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# 월급쟁이를 위한 지출 관리 앱
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 개요
+이 프로젝트는 고정 월급을 받는 직장인들을 위해 특별히 설계된 지출 관리 애플리케이션입니다. 기존의 복잡한 가계부와 달리, 이 앱은 지출에만 초점을 맞추어 사용자의 일상적인 소비 패턴을 쉽고 효과적으로 관리할 수 있도록 돕습니다.
 
-## Available Scripts
+기존 가계부와의 주요 차별점:
+1. 단순화된 인터페이스: 수입 입력을 배제하고 지출에만 집중하여 사용자의 입력 부담을 줄였습니다.
+2. 직관적인 캘린더 기반 UI: 날짜별 지출을 한눈에 파악할 수 있어 월급 주기에 맞춘 지출 관리가 용이합니다.
+3. 실시간 데이터 저장: 입력한 지출 내역이 즉시 저장되어 데이터 손실 걱정이 없습니다.
+4. 간편한 일일 지출 합계: 복잡한 계산 없이 당일 총 지출액을 바로 확인할 수 있습니다.
 
-In the project directory, you can run:
+이 앱은 React를 기반으로 개발되어 빠른 반응성과 부드러운 사용자 경험을 제공하며, 로컬 스토리지를 활용하여 별도의 로그인 없이도 데이터를 안전하게 보관합니다.
 
-### `npm start`
+## 주요 기능
+- 캘린더를 통한 날짜 선택
+- 일일 지출 기록 및 분류
+- 지출 내역 실시간 저장 및 표시
+- 일별 지출 합계 계산
+- 로컬 스토리지를 활용한 데이터 영구 저장
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 사용 기술
+- React.js
+- React Hooks (useState, useEffect, useCallback)
+- LocalStorage
+- CSS Modules
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 프로젝트 구조
+- `App.jsx`: 메인 애플리케이션 컴포넌트
+- `Calendar/`: 달력 관련 컴포넌트
+- `Spend/`: 지출 기록 및 표시 관련 컴포넌트
+- `hooks/useGetSpend.js`: 지출 데이터 관리를 위한 커스텀 훅
