@@ -1,0 +1,11 @@
+.month {
+  float: left;
+  padding: 10px 10px 0px 10px;
+  color: ivory;
+  font-size: 40px;
+  background-color: #F6BB43;
+}
+
+.year {
+  color: #F6BB43;
+}

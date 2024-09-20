@@ -1,37 +1,36 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Calendar from './components/calendar';
-import Spend from './components/spend';
-import Test from './components/Test'
+import { Spend } from './components/spend';
 import './app.css';
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState(null);
+  //const [toggle, setToggle] = useState(false)
 
+  const handleSpendList = useCallback(
+    date => {
+      setSelectedDate(date);
+    },
+    [setSelectedDate],
+  );
 
-    const [selectedDate, setSelectedDate] = useState(null);
-    //const [toggle, setToggle] = useState(false)
+  // useMemo((a, b) => {
+  //     return a + b
+  // }, [])
 
-    const handleSpendList = useCallback((date) => {
-        setSelectedDate(date);
-    }, [setSelectedDate])
+  useEffect(() => {
+    console.log('component did mount!');
+  }, [selectedDate]);
 
-
-    // useMemo((a, b) => {
-    //     return a + b
-    // }, [])
-
-    useEffect(() => {
-        console.log("component did mount!")
-    }, [selectedDate])
-
-    return (
-        <div className="app">
-            {/* {console.log("rendered.")} */}
-            {/* <button onClick={() => setToggle(!toggle)}>Hide</button> */}
-            {/* {toggle ? <Calendar handleSpendList={handleSpendList} /> : null} */}
-            <Calendar handleSpendList={handleSpendList} />
-            <Spend selectedDate={selectedDate} />
-        </div>
-    );
+  return (
+    <div className="app">
+      {/* {console.log("rendered.")} */}
+      {/* <button onClick={() => setToggle(!toggle)}>Hide</button> */}
+      {/* {toggle ? <Calendar handleSpendList={handleSpendList} /> : null} */}
+      <Calendar handleSpendList={handleSpendList} />
+      <Spend selectedDate={selectedDate} />
+    </div>
+  );
 }
 
 export default App;

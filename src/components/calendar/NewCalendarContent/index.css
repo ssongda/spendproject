@@ -1,0 +1,44 @@
+.weekdayTh {
+  width: 100px;
+  height: 15px;
+  font-size: 15px;
+  color: white;
+  background-color: #adb5bd;
+  box-shadow: 0px 0px 3px #ddd;
+}
+
+.day {
+  cursor: pointer;
+  margin: 5px;
+  font-size: 12px;
+  box-shadow: 0px 0px 3px #ddd;
+}
+
+.empty {
+  composes: day;
+  color: gray;
+}
+
+.saturday {
+  composes: day;
+  background-color: #CCE5FF;
+  color: blue;
+  font-weight: bold;
+}
+
+.sunday {
+  composes: day;
+  background-color: #FFCCCC;
+  color: red;
+  font-weight: bold;
+}
+
+.previousOrAfter {
+  color: gray;
+}
+
+.today {
+  composes: day;
+  box-shadow: 0px 0px 3px #FFCC00;
+  background-color: #FFFF99;
+}

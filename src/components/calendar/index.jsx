@@ -1,8 +1,8 @@
-
 import './index.css';
-import CalendarController from './CalendarController';
-import CalendarHeader from './CalendarHeader';
-import CalendarContent from './CalendarContent';
+import { CalendarController } from './CalendarController';
+// import CalendarContent from './CalendarContent';
+import { NewCalendarContent } from './NewCalendarContent';
+import { CalendarHeader } from './CalendarHeader';
 import { useEffect, useState } from 'react';
 
 function Calendar({ handleSpendList }) {
@@ -12,11 +12,11 @@ function Calendar({ handleSpendList }) {
   let currentCalendarMonth = currentDate.getMonth() + 1;
 
   useEffect(() => {
-    console.log("hello!")
+    console.log('hello!');
     return () => {
-      console.log("bye")
-    } // clean up function 
-  }, [])
+      console.log('bye');
+    }; // clean up function
+  }, []);
 
   return (
     <div className="calendar">
@@ -26,11 +26,16 @@ function Calendar({ handleSpendList }) {
           currentCalendarMonth={currentCalendarMonth}
         />
         <CalendarController setCurrentDate={setCurrentDate} />
-        <CalendarContent
+        <NewCalendarContent
           handleSpendList={handleSpendList}
           currentCalendarYear={currentCalendarYear}
           currentCalendarMonth={currentCalendarMonth}
         />
+        {/* <CalendarContent
+          handleSpendList={handleSpendList}
+          currentCalendarYear={currentCalendarYear}
+          currentCalendarMonth={currentCalendarMonth}
+        /> */}
       </div>
     </div>
   );
