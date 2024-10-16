@@ -9,7 +9,6 @@ function SpendContent({ selectedDate }) {
     const { selectedSpend, handleInsertItem, handleDeleteItem } = useGetSpend({ selectedDate });
     const [spendContent, setSpendContent] = useState({});
 
-    // 로컬 스토리지에서 데이터 불러오기
     useEffect(() => {
         const savedContent = localStorage.getItem('spend');
         if (savedContent) {
@@ -17,12 +16,10 @@ function SpendContent({ selectedDate }) {
         }
     }, []);
 
-    // 상태가 변경될 때마다 로컬 스토리지에 저장
     useEffect(() => {
         localStorage.setItem('spend', JSON.stringify(spendContent));
     }, [spendContent]);
 
-    // selectedSpend가 변경될 때 spendContent 업데이트
     useEffect(() => {
         setSpendContent(selectedSpend);
     }, [selectedSpend]);
@@ -33,7 +30,7 @@ function SpendContent({ selectedDate }) {
             <SpendList
                 selectedDate={selectedDate}
                 spendContent={spendContent}
-                handleDeleteItem={handleDeleteItem} // 삭제 핸들러 전달
+                handleDeleteItem={handleDeleteItem}
             />
             <DailyTotal selectedDate={selectedDate} spendContent={spendContent} />
         </div>
