@@ -8,6 +8,7 @@ function SpendForm({ selectedDate, onInsertItem }) {
         e.preventDefault();
 
         onInsertItem({ selectedDate, type: e.target[0].value, amount: e.target[1].value });
+        console.log(selectedDate)
     }
 
     return (

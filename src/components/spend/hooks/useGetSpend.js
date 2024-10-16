@@ -3,8 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 export const useGetSpend = ({ selectedDate }) => {
     const [obj, setObj] = useState({});
 
+    console.log(obj);
+
 
     const handleInsertItem = useCallback(({ selectedDate, type, amount }) => {
+
         const date = selectedDate
             .toLocaleDateString()
             .split('/')
@@ -20,10 +23,8 @@ export const useGetSpend = ({ selectedDate }) => {
         }));
     }, []);
 
-
-
     useEffect(() => {
-        const test = localStorage.getItem('test');
+        const test = localStorage.getItem('spend');
         const formattedDate = selectedDate
             .toLocaleDateString()
             .split('/')
@@ -38,12 +39,12 @@ export const useGetSpend = ({ selectedDate }) => {
 
         setObj((prevObj) => ({
             ...prevObj,
-            ...{ ...prevObj, [formattedDate]: [] },
+            [formattedDate]: prevObj[formattedDate] || [],
         }));
     }, [selectedDate]);
 
     useEffect(() => {
-        localStorage.setItem('key', JSON.stringify(obj));
+        localStorage.setItem('spend', JSON.stringify(obj));
     }, [obj]);
 
     return {

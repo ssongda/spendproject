@@ -6,13 +6,11 @@ export const NewCalendarContent = ({
   currentCalendarMonth,
   handleSpendList,
 }) => {
-  //오늘의 모든 정보
   const today = new Date();
   const thisDate = today.getDate();
   const thisYear = today.getFullYear();
   const thisMonth = today.getMonth() + 1;
 
-  //이번달 첫날의 요일
   const calendarFirstDate = new Date(
     currentCalendarYear,
     currentCalendarMonth - 1,
@@ -20,7 +18,6 @@ export const NewCalendarContent = ({
   );
   const calendarFirstDateDOW = calendarFirstDate.getDay();
 
-  //이번달 마지막날의 일자
   const calendarLastDate = new Date(
     currentCalendarYear,
     currentCalendarMonth,
@@ -28,7 +25,6 @@ export const NewCalendarContent = ({
   );
   const calendarLastDateDay = calendarLastDate.getDate();
 
-  //전달 마지막날의 일자
   const calendarPreviousLastDate = new Date(
     currentCalendarYear,
     currentCalendarMonth - 1,
@@ -37,7 +33,7 @@ export const NewCalendarContent = ({
   const calendarPreviousLastDateDay = calendarPreviousLastDate.getDate();
 
   const generateCalendarDays = () => {
-    const totalDays = 6 * 7; // 6주 * 7일
+    const totalDays = 6 * 7;
     let currentDate = 1 - calendarFirstDateDOW;
 
     return Array.from({ length: totalDays }, (_, index) => {
@@ -47,15 +43,12 @@ export const NewCalendarContent = ({
       let value, empty;
 
       if (currentDate <= 0) {
-        // 이전 달의 날짜
         value = calendarPreviousLastDateDay + currentDate;
         empty = true;
       } else if (currentDate > calendarLastDateDay) {
-        // 다음 달의 날짜
         value = currentDate - calendarLastDateDay;
         empty = true;
       } else {
-        // 현재 달의 날짜
         value = currentDate;
         empty = false;
       }

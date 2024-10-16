@@ -1,7 +1,7 @@
 import '../index.css';
 
 function SpendType() {
-    const spendTypes = ['식비', '교통비', '오락비'];
+    const spendTypes = ['食費', '交通費', 'レーザー費'];
 
     return (
         <>

@@ -3,7 +3,6 @@ import { CustomButton } from '../../common/button';
 export const CalendarController = ({ setCurrentDate }) => {
   const handlePreviousYear = () => {
     setCurrentDate(prevDate => {
-      // 새로운 Date 객체를 생성하여 연도만 수정
       const newDate = new Date(prevDate);
       newDate.setFullYear(newDate.getFullYear() - 1);
       return newDate;
@@ -12,7 +11,6 @@ export const CalendarController = ({ setCurrentDate }) => {
 
   const handlePreviousMonth = () => {
     setCurrentDate(prevDate => {
-      // 새로운 Date 객체를 생성하여 월만 수정
       const newDate = new Date(prevDate);
       newDate.setMonth(newDate.getMonth() - 1);
       return newDate;
@@ -39,8 +37,6 @@ export const CalendarController = ({ setCurrentDate }) => {
     });
   };
 
-  // (함수가) 나 뭐했다.
-  //const list = ["«", "‹", "now", "›", "»"]
   const list = [
     { label: '«', action: handlePreviousYear },
     { label: '‹', action: handlePreviousMonth },

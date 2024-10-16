@@ -1,24 +1,29 @@
-import { useEffect, useState } from 'react';
 import '../index.css';
 
 
 function SpendList({ selectedDate, spendContent, setSpendContent }) {
 
+    const formattedDate = selectedDate
+        .toLocaleDateString()
+        .split('/')
+        .map((item) => item.padStart(2, '0'))
+        .join('');
 
-    const [formattedDate, setFormattedDate] = useState('')
-
-    useEffect(() => {
-        setFormattedDate(selectedDate
-            .toLocaleDateString()
-            .split('/')
-            .map((item) => item.padStart(2, '0'))
-            .join(''))
-    }, [])
-
+    console.log(spendContent)
+    console.log(spendContent[formattedDate])
 
     const handleClick = (spendId) => {
 
-        setSpendContent(spendContent.filter(filter => filter.id !== spendId))
+        setSpendContent((prevContent) => {
+            const dateSpend = prevContent[formattedDate] || [];
+            const filteredSpend = dateSpend.filter(item => item.id !== spendId);
+
+            console.log(filteredSpend)
+            return {
+                ...prevContent,
+                [formattedDate]: filteredSpend,
+            };
+        });
     }
 
     return (
@@ -27,14 +32,14 @@ function SpendList({ selectedDate, spendContent, setSpendContent }) {
             <table>
                 <thead className="contentTag">
                     <tr>
-                        <th className='contentTh'>지출항목</th>
-                        <th className='contentTh'>지출액</th>
+                        <th className='contentTh'>支出項目</th>
+                        <th className='contentTh'>支出額</th>
                     </tr>
                 </thead>
                 <tbody className="content">
                     {
-                        spendContent[formattedDate] ? spendContent[formattedDate].map((item, key) => (
-                            <tr key={key}>
+                        spendContent[formattedDate] ? spendContent[formattedDate].map((item, index) => (
+                            <tr key={item.id}>
                                 <td className="contentTd">{item.type}</td>
                                 <td className="contentTd">{item.amount}</td>
                                 <td>

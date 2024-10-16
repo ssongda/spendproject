@@ -7,29 +7,31 @@ import { useEffect, useState } from 'react';
 
 function SpendContent({ selectedDate }) {
 
-    const indexArray = selectedDate.toLocaleDateString();
     const [spendContent, setSpendContent] = useState([])
     const { selectedSpend, handleInsertItem } = useGetSpend({ selectedDate });
 
 
     useEffect(() => {
-        const savedContent = localStorage.getItem('key', JSON.stringify(spendContent));
+        const savedContent = localStorage.getItem('spend');
         if (savedContent) {
             setSpendContent(JSON.parse(savedContent));
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
-        localStorage.setItem('key', JSON.stringify(spendContent));
+        localStorage.setItem('spend', JSON.stringify(spendContent));
     }, [spendContent]);
 
-    console.log(selectedSpend)
+    useEffect(() => {
+        setSpendContent(selectedSpend);
+    }, [selectedSpend]);
+
 
     return (
         <div className="spendContent" >
             <SpendForm selectedDate={selectedDate} onInsertItem={handleInsertItem} />
-            <SpendList selectedDate={selectedDate} spendContent={selectedSpend} setSpendContent={setSpendContent} />
-            <DailyTotal spendContent={spendContent} />
+            <SpendList selectedDate={selectedDate} spendContent={spendContent} setSpendContent={setSpendContent} />
+            <DailyTotal selectedDate={selectedDate} spendContent={spendContent} />
         </div>)
 
 

@@ -4,21 +4,17 @@ import './index.css';
 
 function CalendarContent({ currentCalendarYear, currentCalendarMonth, handleSpendList }) {
 
-    //오늘의 모든 정보
     const today = new Date();
     const thisDate = today.getDate();
     const thisYear = today.getFullYear();
     const thisMonth = today.getMonth() + 1;
 
-    //이번달 첫날의 요일
     const calendarFirstDate = new Date(currentCalendarYear, currentCalendarMonth - 1, 1);
     const calendarFirstDateDOW = calendarFirstDate.getDay();
 
-    //이번달 마지막날의 일자
     const calendarLastDate = new Date(currentCalendarYear, currentCalendarMonth, 0);
     const calendarLastDateDay = calendarLastDate.getDate();
 
-    //전달 마지막날의 일자
     const calendarPreviousLastDate = new Date(currentCalendarYear, currentCalendarMonth - 1, 0);
     const calendarPreviousLastDateDay = calendarPreviousLastDate.getDate();
 
