@@ -3,54 +3,55 @@ import { useCallback, useEffect, useState } from "react";
 export const useGetSpend = ({ selectedDate }) => {
     const [obj, setObj] = useState({});
 
-    console.log(obj);
-
-
     const handleInsertItem = useCallback(({ selectedDate, type, amount }) => {
-
         const date = selectedDate
             .toLocaleDateString()
             .split('/')
             .map((item) => item.padStart(2, '0'))
             .join('');
 
-        setObj((prevObj) => ({
-            ...prevObj,
-            [date]: [
-                ...(prevObj[date] || []),
-                { id: Date.now(), type, amount }
-            ]
-        }));
+        const newItem = { id: Date.now(), type, amount };
+
+        setObj((prevObj) => {
+            const updatedObj = {
+                ...prevObj,
+                [date]: [...(prevObj[date] || []), newItem],
+            };
+            localStorage.setItem('spend', JSON.stringify(updatedObj));
+            return updatedObj;
+        });
     }, []);
 
     useEffect(() => {
-        const test = localStorage.getItem('spend');
-        const formattedDate = selectedDate
+        const storedData = localStorage.getItem('spend');
+        if (storedData) {
+            setObj(JSON.parse(storedData));
+        }
+    }, []);
+
+    const handleDeleteItem = useCallback((selectedDate, spendId) => {
+        const date = selectedDate
             .toLocaleDateString()
             .split('/')
             .map((item) => item.padStart(2, '0'))
             .join('');
 
-        if (test) {
-            setObj(JSON.parse(test));
-        }
+        setObj(prevObj => {
+            const dateSpend = prevObj[date] || [];
+            const filteredSpend = dateSpend.filter(item => item.id !== spendId);
 
-        if (!selectedDate) return;
-
-        setObj((prevObj) => ({
-            ...prevObj,
-            [formattedDate]: prevObj[formattedDate] || [],
-        }));
-    }, [selectedDate]);
-
-    useEffect(() => {
-        localStorage.setItem('spend', JSON.stringify(obj));
-    }, [obj]);
+            const updatedObj = {
+                ...prevObj,
+                [date]: filteredSpend.length > 0 ? filteredSpend : undefined,
+            };
+            localStorage.setItem('spend', JSON.stringify(updatedObj));
+            return updatedObj;
+        });
+    }, []);
 
     return {
         selectedSpend: obj,
-        handleInsertItem
+        handleInsertItem,
+        handleDeleteItem,
     };
 };
-
-

@@ -1,44 +1,29 @@
 import '../index.css';
 
-
-function SpendList({ selectedDate, spendContent, setSpendContent }) {
-
+function SpendList({ selectedDate, spendContent, handleDeleteItem }) {
     const formattedDate = selectedDate
         .toLocaleDateString()
         .split('/')
         .map((item) => item.padStart(2, '0'))
         .join('');
 
-    console.log(spendContent)
-    console.log(spendContent[formattedDate])
-
     const handleClick = (spendId) => {
-
-        setSpendContent((prevContent) => {
-            const dateSpend = prevContent[formattedDate] || [];
-            const filteredSpend = dateSpend.filter(item => item.id !== spendId);
-
-            console.log(filteredSpend)
-            return {
-                ...prevContent,
-                [formattedDate]: filteredSpend,
-            };
-        });
-    }
+        handleDeleteItem(selectedDate, spendId);
+    };
 
     return (
         <div className="spendList">
-
             <table>
                 <thead className="contentTag">
                     <tr>
                         <th className='contentTh'>支出項目</th>
                         <th className='contentTh'>支出額</th>
+                        {/* <th className='contentTh'>操作</th> */}
                     </tr>
                 </thead>
                 <tbody className="content">
                     {
-                        spendContent[formattedDate] ? spendContent[formattedDate].map((item, index) => (
+                        spendContent[formattedDate] ? spendContent[formattedDate].map((item) => (
                             <tr key={item.id}>
                                 <td className="contentTd">{item.type}</td>
                                 <td className="contentTd">{item.amount}</td>
@@ -51,19 +36,11 @@ function SpendList({ selectedDate, spendContent, setSpendContent }) {
                                     </button>
                                 </td>
                             </tr>
-                        )) : null
-
-
+                        )) : <tr><td colSpan="3" className="nothing">Nothing</td></tr>
                     }
                 </tbody>
             </table>
-            {spendContent.length === 0 &&
-                <div className="nothing">Nothing</div>
-            }
-
         </div>
-
-
     );
 }
 
